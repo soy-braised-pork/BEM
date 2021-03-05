@@ -8,11 +8,9 @@ import java.util.Map;
 
 /**
  * @author zhaohan
- * tcp连接池
  */
 
 public class TcpConnectionPool {
-
     private ArrayList<Socket> arrayList=new ArrayList<Socket>();
     private ArrayList<Integer> arr=new ArrayList<Integer>();
     private String host;
@@ -21,26 +19,15 @@ public class TcpConnectionPool {
     private int captain;
     private int backFlag=0;
 
-    public TcpConnectionPool(int captain){
+    public TcpConnectionPool(int captain,String host,int port){
+
         this.captain=captain;
-    }
-    public String getHost() {
-        return host;
+        this.host=host;
+        this.port=port;
+
     }
 
-    public void setHost(String host) {
-        this.host = host;
-    }
-
-    public int getPort() {
-        return port;
-    }
-
-    public void setPort(int port) {
-        this.port = port;
-    }
-
-    public void init()throws IOException{
+    public void init()throws IOException {
 
         for (int i=0;i<captain;i++){
             Socket socket=new Socket(host,port);
@@ -94,4 +81,3 @@ public class TcpConnectionPool {
     }
 
 }
-
