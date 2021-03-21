@@ -11,8 +11,8 @@ import java.util.Map;
  */
 
 public class TcpConnectionPool {
-    private ArrayList<Socket> arrayList=new ArrayList<Socket>();
-    private ArrayList<Integer> arr=new ArrayList<Integer>();
+    private ArrayList<Socket> arrayList= new ArrayList<>();
+    private ArrayList<Integer> arr= new ArrayList<>();
     private String host;
     private int port;
     private Integer count=0;
@@ -41,9 +41,9 @@ public class TcpConnectionPool {
         if (count<arrayList.size()){
 
             Socket socket=arrayList.get(count);
-            Map<Integer,Socket> map=new HashMap<Integer,Socket>();
+            Map<Integer,Socket> map= new HashMap<>();
             map.put(count,socket);
-            count=count+1;
+            count++;
             return map;
 
         }else if (backFlag!=0){
@@ -72,11 +72,10 @@ public class TcpConnectionPool {
             backFlag=0;
             backFlag++;
             arr.clear();
-            arr.add(flag);
         }else {
             backFlag++;
-            arr.add(flag);
         }
+        arr.add(flag);
 
     }
 

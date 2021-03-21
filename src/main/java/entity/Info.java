@@ -10,6 +10,7 @@ public class Info implements Serializable {
     private String place;  //地址
     private float temperature;    //实时温度
 
+
     public int getId() {
         return id;
     }
