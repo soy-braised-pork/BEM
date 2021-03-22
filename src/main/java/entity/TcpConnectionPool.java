@@ -11,68 +11,68 @@ import java.util.Map;
  */
 
 public class TcpConnectionPool {
-    private ArrayList<Socket> arrayList= new ArrayList<>();
-    private ArrayList<Integer> arr= new ArrayList<>();
+    private ArrayList<Socket> arrayList = new ArrayList<>();
+    private ArrayList<Integer> arr = new ArrayList<>();
     private String host;
     private int port;
-    private Integer count=0;
+    private Integer count = 0;
     private int captain;
-    private int backFlag=0;
+    private int backFlag = 0;
 
-    public TcpConnectionPool(int captain,String host,int port){
+    public TcpConnectionPool(int captain, String host, int port) {
 
-        this.captain=captain;
-        this.host=host;
-        this.port=port;
+        this.captain = captain;
+        this.host = host;
+        this.port = port;
 
     }
 
-    public void init()throws IOException {
+    public void init() throws IOException {
 
-        for (int i=0;i<captain;i++){
-            Socket socket=new Socket(host,port);
+        for (int i = 0; i < captain; i++) {
+            Socket socket = new Socket(host, port);
             arrayList.add(socket);
         }
 
     }
 
-    public Map<Integer,Socket> getConnection() {
+    public Map<Integer, Socket> getConnection() {
 
-        if (count<arrayList.size()){
+        if (count < arrayList.size()) {
 
-            Socket socket=arrayList.get(count);
-            Map<Integer,Socket> map= new HashMap<>();
-            map.put(count,socket);
+            Socket socket = arrayList.get(count);
+            Map<Integer, Socket> map = new HashMap<>();
+            map.put(count, socket);
             count++;
             return map;
 
-        }else if (backFlag!=0){
+        } else if (backFlag != 0) {
 
-            Integer flag=arr.get(0);
+            Integer flag = arr.get(0);
             arr.remove(0);
             backFlag--;
-            Socket socket=arrayList.get(flag);
-            Map<Integer,Socket> map=new HashMap<Integer, Socket>();
-            map.put(flag,socket);
+            Socket socket = arrayList.get(flag);
+            Map<Integer, Socket> map = new HashMap<Integer, Socket>();
+            map.put(flag, socket);
             return map;
 
-        }else {
+        } else {
 
-            Map<Integer,Socket> map=new HashMap<Integer, Socket>();
-            map.put(null,null);
+            Map<Integer, Socket> map = new HashMap<Integer, Socket>();
+            map.put(null, null);
             return map;
 
         }
 
     }
 
-    public void back(Integer flag){
+    public void back(Integer flag) {
 
-        if (backFlag>=captain){
-            backFlag=0;
+        if (backFlag >= captain) {
+            backFlag = 0;
             backFlag++;
             arr.clear();
-        }else {
+        } else {
             backFlag++;
         }
         arr.add(flag);

@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class InfoTest {
 
     @Test
-    public void test(){
+    public void test() {
 //        TcpConnectionPool tcpConnectionPool=new TcpConnectionPool();
     }
 }
