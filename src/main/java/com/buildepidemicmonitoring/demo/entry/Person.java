@@ -9,17 +9,17 @@ public class Person implements Serializable {
 
     private static final long serialVersionUID = 4148531456699812439L;
 
-    private int id;    //摄像头ID：指明摄像头所在地址
+    private int areaId;    //摄像头ID：指明摄像头所在地址
     MultipartFile image;   // 图片
     private float temperature;    //实时温度
 
 
     public int getId() {
-        return id;
+        return areaId;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.areaId = id;
     }
 
 
