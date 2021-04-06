@@ -1,4 +1,4 @@
-package entity;
+package com.buildepidemicmonitoring.demo.entity;
 
 import java.io.IOException;
 import java.net.Socket;

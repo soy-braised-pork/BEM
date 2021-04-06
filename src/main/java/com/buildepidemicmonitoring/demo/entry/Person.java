@@ -1,15 +1,16 @@
-package entity;
+package com.buildepidemicmonitoring.demo.entry;
 
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.Serializable;
 
-public class Info implements Serializable {
+public class Person implements Serializable {
 
-    private static final long serialVersionUID = -6154241154676769466L;
 
-    private int id;  //摄像头ID：指明摄像头所在地址
-    MultipartFile image; // 图片
+    private static final long serialVersionUID = 4148531456699812439L;
+
+    private int id;    //摄像头ID：指明摄像头所在地址
+    MultipartFile image;   // 图片
     private float temperature;    //实时温度
 
 
