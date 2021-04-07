@@ -23,6 +23,7 @@ public class HttpServer {
              */
             //服务端启动辅助类 bootstrap
             ServerBootstrap bootstrap=new ServerBootstrap();
+            //
             bootstrap.group(bossGroup,workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .childHandler(new HttpServerInitializer());
