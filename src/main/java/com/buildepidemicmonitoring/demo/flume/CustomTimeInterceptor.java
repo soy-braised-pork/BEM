@@ -33,7 +33,7 @@ public class CustomTimeInterceptor implements Interceptor{
         String msg=new String(body, StandardCharsets.UTF_8);
 
         //按照空格切分
-        String[] arr=msg.split("");
+        String[] arr=msg.split(" ");
         //因为有个文件没有是脏的，所以不能切分，所以我们需要判断
         String eventTime="";
         if (arr.length>11){
