@@ -1,4 +1,4 @@
-package netty;
+package com.buildepidemicmonitoring.demo.netty;
 
 
 import io.netty.channel.ChannelInitializer;
@@ -12,7 +12,7 @@ public class HttpServerInitializer extends ChannelInitializer<SocketChannel> {
         //处理http消息的编解码
         pipeline.addLast("httpServerCodec",new HttpServerCodec());
         //添加自定义的ChannelHandler
-        pipeline.addLast("httpServerHandler",new HttpServerHandler());
+//        pipeline.addLast("httpServerHandler",new HttpServerHandler());
     }
 
 }
