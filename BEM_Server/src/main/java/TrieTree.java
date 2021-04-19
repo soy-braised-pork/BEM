@@ -1,5 +1,7 @@
 import javax.xml.soap.Node;
 
+//时间复杂度 O(len)
+
 public class Main {
 
     private TrieNode root; //根
