@@ -27,5 +27,7 @@ public class LoggerTests {
         logger.debug("----------------------debug--------------------------");
         logger.info("---------info----------    name:{} passwd:{}",name,passwd);
         logger.error("----------------------error---------------------");
+
+
     }
 }

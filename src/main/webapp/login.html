@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>楼宇疫情登录页</title>
+    <%--导入  绝对路径--%>
+    <script src="${pageContext.request.contextPath}/statics/js/jquery-3.5.1.min.js"/>
+</head>
+<body>
+
+<script type="text/javascript">
+    function querySingIn() {
+        var personId=$("#userName").val();
+        var password=$("#password-always-checkbox").val();
+        var verifyCode=$("#verifyCode").val();
+
+        //检查账户名
+        if (personId.trim()===""){
+            showError("#erruser","登录名不能为空！");
+            return false;
+        }else {
+            clearError("#erruser");
+        }
+
+        //检查密码
+        if (password.trim()===""){
+            showError("#errpwd","密码不能为空！");
+            return false;
+        }else {
+            clearError("#errpwd");
+        }
+
+        //检查验证码
+        if (verifyCode.trim()===""){
+            showError("#errvacode","验证码不能为空！");
+            return false;
+        }else {
+            clearError("#errvacode");
+        }
+
+        //将文本框输入的值
+        //发送给服务器
+        //接收服务器返回的数据
+
+        //url:待载入页面的URL地址
+        //data:待发送 key/value 参数
+        //success:载入成功时回调函数
+        // data  封装了服务器返回的数据     status  状态
+        $.ajax({
+            // url: "index/singIn.action",
+            url: "${pageContext.request.contextPath}/index/querySingIn",
+            type: 'post',
+            dataType: 'json',
+            data: {
+                "personId": personId,
+                "password": password,
+                "verifyCode":verifyCode
+            },
+            success: function (data,status,result) {
+                console.log(data);
+                console.log(status);
+            }
+        })
+    }
+
+
+    function showError(id,text) {
+        $(id).show();
+        $(id).text(text);
+    }
+
+    function clearError(id) {
+        $(id).hide();
+    }
+
+    function resetform() {
+        $("#userName").val("");
+        $("#password-always-checkbox").val("");
+        $("#verifyCode").val("");
+    }
+
+</script>
+
+<%--onblur失去焦点产生事件--%>
+用户名：
+<input type="text" id="userName" onblur="querySingIn()">
+密码：
+<input type="text" id="password-always-checkbox" onblur="querySingIn()">
+验证码：
+<input type="text" id="verifyCode" onblur="querySingIn()">
+
+<div class="login-action">
+    <input type="button" class="login-btn" id="submitbutton"  value="登录" style="background-color: #1fa075;" onclick="login()"> <input type="reset" id="reset" class="reset-btn" value="重置" onclick="resetform()">
+</div>
+
+<div class="about-tip">
+    系统提示：<span>为了您的帐号安全，请经常修改密码！如果您忘记了密码，请及时和系统管理员联系！</span>
+</div>
+
+</body>
+</html>
