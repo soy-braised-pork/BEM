@@ -34,9 +34,8 @@ public class OperatorDao {
     private String password; //密码
 
 
-
     public OperatorDao() {
         //构造器
-        List list = new List;
+
     }
 }

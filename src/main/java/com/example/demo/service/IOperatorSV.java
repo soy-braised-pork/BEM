@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.demo.dao.OperatorDao;
 import com.example.demo.dao.PersonDao;
 import org.springframework.stereotype.Component;

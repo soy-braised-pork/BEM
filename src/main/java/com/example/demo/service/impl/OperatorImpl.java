@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,5 +45,13 @@ public class OperatorImpl implements IOperatorSV {
     @Override
     public List<PersonDao> getOperator() {
         return null;
+    }
+
+
+    public static void main(String[] args) {
+        byte a = 127;
+        byte b = 127;
+        b = (byte) (a + b); // 报编译错误:cannot convert from int to byte
+        b += a;
     }
 }
