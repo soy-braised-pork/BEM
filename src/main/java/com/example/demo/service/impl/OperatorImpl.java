@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.dao.OperatorDao;
 import com.example.demo.dao.mapper.OperatorMapper;
 import com.example.demo.dao.PersonDao;
 import com.example.demo.service.IOperatorSV;
@@ -22,10 +23,10 @@ public class OperatorImpl implements IOperatorSV {
     private OperatorMapper operatorMapper;
 
     @Override
-    public PersonDao checkLogin(String personId, String pwd) throws Exception {
+    public OperatorDao checkLogin(String personId, String pwd) throws Exception {
         //校验用户名是否存在
         //拿用户名查询
-        PersonDao operatorDao = operatorMapper.findByPersonId(personId);
+        OperatorDao operatorDao = operatorMapper.findByPersonId(personId);
         if ("".equals(personId)) {
             throw new Exception("登录名不能为空");
         } else {
@@ -34,9 +35,9 @@ public class OperatorImpl implements IOperatorSV {
             } else {
                 //用户名拿到密码，是否与入参一致
                 //拿到密码
-//                if (!operatorDao.getPassword().equals(pwd.trim())){
-//                    throw new Exception("密码错误");
-//                }
+                if (!operatorDao.getPassword().equals(pwd.trim())){
+                    throw new Exception("密码错误");
+                }
             }
         }
         return operatorDao;
@@ -48,10 +49,4 @@ public class OperatorImpl implements IOperatorSV {
     }
 
 
-    public static void main(String[] args) {
-        byte a = 127;
-        byte b = 127;
-        b = (byte) (a + b); // 报编译错误:cannot convert from int to byte
-        b += a;
-    }
 }

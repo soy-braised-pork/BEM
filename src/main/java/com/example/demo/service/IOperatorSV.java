@@ -19,7 +19,7 @@ public interface IOperatorSV {
     /**
      * 验证用户名密码
      */
-    PersonDao checkLogin(String personId, String pwd) throws Exception;
+    OperatorDao checkLogin(String personId, String pwd) throws Exception;
 
     /**
      * 查询用户信息
