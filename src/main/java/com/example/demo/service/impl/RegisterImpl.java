@@ -28,7 +28,7 @@ public class RegisterImpl implements RegisterService {
             return map;
         }
         if (request.getPassword()==request.getRePassword()){
-            registerMapper.insertOperator(request.getUserName(), request.getPassword());
+            registerMapper.insertOperator(request.getUserName(), request.getPassword(), request.getRole());
             map.put("success","成功");
             return map;
         }else {

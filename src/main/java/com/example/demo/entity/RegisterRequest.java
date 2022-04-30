@@ -11,9 +11,10 @@ import java.io.Serializable;
 @Data
 public class RegisterRequest implements Serializable {
 
-    private int userName;
-    private int password;
-    private int rePassword;
+    private String userName;
+    private String password;
+    private String rePassword;
+    private String role;
 
 }
 
