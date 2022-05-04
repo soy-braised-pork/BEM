@@ -17,12 +17,12 @@ public interface LoginMapper {
 
     /**
      * 修改密码
-     * @param operatorId
+     * @param userName
      * @param password
      * @return
      */
-    @Update(value = "UPDATE operator_menu SET password=#{password} WHERE operator_id=#{operatorId}")
-    Long updatePassword(@Param("operatorId") int operatorId,@Param("password") int password);
+    @Update(value = "UPDATE operator_menu SET password=#{password} WHERE user_name=#{userName}")
+    Long updatePassword(@Param("userName") String userName,@Param("password") String password);
 
 }
 

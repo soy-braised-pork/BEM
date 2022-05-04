@@ -3,7 +3,6 @@ package com.example.demo.dao.mapper;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @MapperScan
-@Configuration
 public interface RegisterMapper {
 
     /**
@@ -21,8 +19,8 @@ public interface RegisterMapper {
      * @param password
      * @return
      */
-    @Insert(value = "INSERT INTO operator_menu (operator_id ,password) VALUES (#{operatorId},#{password})")
-    Long insertOperator(@Param("operatorId") int operatorId,@Param("password") int password);
+    @Insert(value = "INSERT INTO operator_menu (user_name ,o_password,o_role) VALUES (#{operatorId},#{password},#{role})")
+    Long insertOperator(@Param("operatorId") String operatorId,@Param("password") String password,@Param("role")String role);
 
 }
 
