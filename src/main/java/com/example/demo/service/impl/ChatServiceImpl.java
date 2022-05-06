@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,7 +33,7 @@ public class ChatServiceImpl implements ChatService {
             map.put("errorCode ", "入参不能为空");
             return map;
         }
-        Long chat = chatMapper.insertChat(request.getUserName(), request.getContext());
+        Long chat = chatMapper.insertChat(request.getUserName(), request.getContext(), new Date());
         if (chat < 0L){
             map.put("errorCode ", "入参不能为空");
             return map;
