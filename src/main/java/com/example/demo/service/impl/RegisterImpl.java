@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,7 +29,7 @@ public class RegisterImpl implements RegisterService {
             return map;
         }
         if (request.getPassword()==request.getRePassword()){
-            registerMapper.insertOperator(request.getUserName(), request.getPassword(), request.getRole());
+            registerMapper.insertOperator(request.getUserName(), request.getPassword(), request.getRole(),new Date());
             map.put("success","成功");
             return map;
         }else {

@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,10 +21,11 @@ public interface ChatMapper {
      * 用户新增留言
      * @param userName
      * @param context
+     * @param create
      * @return
      */
-    @Insert(value = "INSERT INTO bem_chat (o_user_name,c_context,status) VALUES (#{userName},#{context},0)")
-    Long insertChat(@Param("userName") String userName,@Param("context") String context);
+    @Insert(value = "INSERT INTO bem_chat (o_user_name,c_context,status,gmt_create) VALUES (#{userName},#{context},0,#{create})")
+    Long insertChat(@Param("userName") String userName, @Param("context") String context, @Param("create") Date create);
 
     /**
      * 分页查询留言板
