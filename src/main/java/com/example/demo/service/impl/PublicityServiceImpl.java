@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +32,7 @@ public class PublicityServiceImpl implements PublicityService {
             map.put("errorCode ", "入参不能为空");
             return map;
         }
-        Long aLong = publicityMapper.insertPublicity(request.getContext());
+        Long aLong = publicityMapper.insertPublicity(request.getContext(),new Date());
         if (aLong < 0L){
             map.put("errorCode ", "录入失败");
             return map;

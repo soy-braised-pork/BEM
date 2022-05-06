@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,10 +20,11 @@ public interface PublicityMapper {
     /**
      * 写入公告
      * @param context
+     * @param create
      * @return
      */
-    @Insert(value = "INSERT INTO bem_public (p_context,status) VALUES (#{context},0)")
-    Long insertPublicity(@Param("context") String context);
+    @Insert(value = "INSERT INTO bem_public (p_context,status,gmt_create) VALUES (#{context},0,#{create})")
+    Long insertPublicity(@Param("context") String context, @Param("create") Date create);
 
     /**
      * 查看公告

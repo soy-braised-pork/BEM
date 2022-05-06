@@ -3,6 +3,7 @@ package com.example.demo.entity;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author zhaohan
@@ -12,6 +13,7 @@ public class BemPublicDo implements Serializable {
 
     private String pContext;
     private Integer status;
+    private Date gmtCreate;
 
 }
 
