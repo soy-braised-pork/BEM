@@ -24,7 +24,7 @@ public class TaskController {
      * 每天3点发送机器的数据信息
      * @return
      */
-    @Scheduled(cron = "0 0 3 * *")
+    @Scheduled(cron = "0 0 3 * * *")
     public void sendMessage(){
         taskService.sendMessage();
     }
