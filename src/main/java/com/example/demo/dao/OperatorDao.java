@@ -13,6 +13,11 @@ import java.util.List;
 
 public class OperatorDao {
 
+    private Integer personId; //管理员id
+    private String password; //密码
+
+
+
 
     public Integer getPersonId() {
         return personId;
@@ -29,10 +34,6 @@ public class OperatorDao {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    private Integer personId; //管理员id
-    private String password; //密码
-
 
     public OperatorDao() {
         //构造器

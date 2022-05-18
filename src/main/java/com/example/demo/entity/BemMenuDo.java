@@ -13,7 +13,7 @@ public class BemMenuDo implements Serializable {
 
     private Long id;
     private Long sysId;
-    private Long personName;
+    private String personName;
     private Double personTemp;
     private String personPicture;
     private Integer status;
