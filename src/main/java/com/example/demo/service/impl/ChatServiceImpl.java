@@ -6,9 +6,9 @@ import com.example.demo.entity.ChatDo;
 import com.example.demo.entity.ChatInsertRequest;
 import com.example.demo.service.ChatService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -28,8 +28,8 @@ public class ChatServiceImpl implements ChatService {
     @Override
     public Map insertChat(ChatInsertRequest request) {
         HashMap map = new HashMap<>();
-        if (request == null && StringUtils.isEmpty(request.getUserName())
-                && StringUtils.isEmpty(request.getContext())){
+        if (request == null || StringUtils.isEmpty(request.getUserName())
+                || StringUtils.isEmpty(request.getContext())){
             map.put("errorCode ", "入参不能为空");
             return map;
         }
@@ -50,7 +50,9 @@ public class ChatServiceImpl implements ChatService {
             map.put("errorCode ", "入参不能为空");
             return map;
         }
-        List<ChatDo> dos = chatMapper.chatPage(request.getCurrPage(), request.getLimit());
+        int currPage;
+        currPage= request.getCurrPage()* request.getLimit();
+        List<ChatDo> dos = chatMapper.chatPage(currPage, request.getLimit());
         map.put("errorCode", "success");
         map.put("body", dos);
         return map;

@@ -21,8 +21,8 @@ class DemoApplicationTests {
 
     @Test
     void contextLoads(){
-        OperatorDao users =  operatorMapper.findByPersonId("111");
-        System.out.println(users);
+//        OperatorDao users =  operatorMapper.findByPersonId("111");
+//        System.out.println(users);
     }
 
 }

@@ -16,7 +16,7 @@ class OperatorMapperTest {
 
     @Test
     void findByPersonId() {
-        OperatorDao users =  OperatorMapper.findByPersonId("111");
-        System.out.println(users);
+//        OperatorDao users =  OperatorMapper.findByPersonId("111");
+//        System.out.println(users);
     }
 }

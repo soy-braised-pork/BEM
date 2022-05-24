@@ -3,6 +3,7 @@ package com.example.demo.service.impl;
 import com.example.demo.dao.mapper.SearchMapper;
 import com.example.demo.entity.BemMenuDo;
 import com.example.demo.entity.BemPageRequest;
+import com.example.demo.entity.SearchRequest;
 import com.example.demo.service.SearchService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +24,13 @@ public class SearchServiceImpl implements SearchService {
     private SearchMapper searchMapper;
 
     @Override
-    public Map searchPerson(String personName) {
+    public Map searchPerson(SearchRequest request) {
         HashMap map = new HashMap<>();
-        if (personName == null) {
+        if (request == null) {
             map.put("errorCode ", "入参不能为空");
             return map;
         }
-        List<BemMenuDo> dos = searchMapper.searchPerson(personName);
+        List<BemMenuDo> dos = searchMapper.searchPerson(request.getPersonName());
         map.put("errorCode", "success");
         map.put("body", dos);
         return map;

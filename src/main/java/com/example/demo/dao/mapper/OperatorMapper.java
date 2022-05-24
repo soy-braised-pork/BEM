@@ -2,6 +2,7 @@ package com.example.demo.dao.mapper;
 
 import com.example.demo.dao.OperatorDao;
 import com.example.demo.dao.PersonDao;
+import com.example.demo.entity.OperatorDO;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.mybatis.spring.annotation.MapperScan;
@@ -18,7 +19,7 @@ import org.springframework.stereotype.Repository;
 @Configuration
 public interface OperatorMapper{
 
-    @Select(value = "SELECT * FROM operator_menu WHERE operator_id=#{personId}")
-    OperatorDao findByPersonId(@Param("personId") String personId);
+    @Select(value = "SELECT * FROM operator_menu WHERE user_name=#{userName}")
+    OperatorDO findByPersonId(@Param("userName") String userName);
 
 }

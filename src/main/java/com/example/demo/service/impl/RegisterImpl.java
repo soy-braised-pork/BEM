@@ -25,15 +25,15 @@ public class RegisterImpl implements RegisterService {
     public Map registerOperator(RegisterRequest request) {
         Map map = new HashMap<>();
         if (request == null){
-            map.put("error","缺少参数");
+            map.put("errorCode","缺少参数");
             return map;
         }
-        if (request.getPassword()==request.getRePassword()){
+        if (request.getPassword().equals(request.getRePassword())){
             registerMapper.insertOperator(request.getUserName(), request.getPassword(), request.getRole(),new Date());
-            map.put("success","成功");
+            map.put("errorCode","成功");
             return map;
         }else {
-            map.put("error","两次密码不一致");
+            map.put("errorCode","两次密码不一致");
             return map;
         }
     }

@@ -3,13 +3,18 @@ package com.example.demo.service.impl;
 import com.example.demo.dao.OperatorDao;
 import com.example.demo.dao.mapper.OperatorMapper;
 import com.example.demo.dao.PersonDao;
+import com.example.demo.entity.OperatorDO;
+import com.example.demo.entity.OperatorRequest;
 import com.example.demo.service.IOperatorSV;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author zlx
@@ -23,24 +28,25 @@ public class OperatorImpl implements IOperatorSV {
     private OperatorMapper operatorMapper;
 
     @Override
-    public OperatorDao checkLogin(String personId, String pwd) throws Exception {
-        //校验用户名是否存在
-        //拿用户名查询
-        OperatorDao operatorDao = operatorMapper.findByPersonId(personId);
-        if ("".equals(personId)) {
-            throw new Exception("登录名不能为空");
-        } else {
-            if (operatorDao == null) {
-                throw new Exception("用户名不存在");
-            } else {
-                //用户名拿到密码，是否与入参一致
-                //拿到密码
-                if (!operatorDao.getPassword().equals(pwd.trim())){
-                    throw new Exception("密码错误");
-                }
-            }
+    public Map checkLogin(OperatorRequest request) throws Exception {
+        HashMap map = new HashMap<>();
+        if (request==null || StringUtils.isBlank(request.getUserName())
+                || StringUtils.isBlank(request.getPassword())){
+            map.put("errorCode","入参不能为空");
+            return map;
         }
-        return operatorDao;
+        OperatorDO operatorDO = operatorMapper.findByPersonId(request.getUserName());
+        if (operatorDO==null){
+            map.put("errorCode","用户名不存在");
+            return map;
+        }
+        if (operatorDO.getOPassword().equals(request.getPassword())){
+            map.put("errorCode","成功");
+            return map;
+        }else {
+            map.put("errorCode","密码不正确");
+            return map;
+        }
     }
 
     @Override

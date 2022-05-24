@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
@@ -20,7 +21,7 @@ import java.util.Random;
  * Creat on 2022-02-14
  * 控制验证码的controller
  */
-@Controller
+@RestController
 @RequestMapping("/codeController")
 public class CodeController {
     private int width = 83;//验证码宽度

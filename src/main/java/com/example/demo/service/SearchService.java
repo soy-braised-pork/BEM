@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.entity.BemMenuDo;
 import com.example.demo.entity.BemPageRequest;
+import com.example.demo.entity.SearchRequest;
 
 import java.util.List;
 import java.util.Map;
@@ -13,10 +14,10 @@ public interface SearchService {
 
     /**
      * 搜索个人的信息列表
-     * @param personName
+     * @param request
      * @return
      */
-    Map searchPerson(String personName);
+    Map searchPerson(SearchRequest request);
 
     /**
      * 分页查询个人信息
