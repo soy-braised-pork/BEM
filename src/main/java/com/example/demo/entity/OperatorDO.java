@@ -4,16 +4,19 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author zhaohan
  **/
 @Data
-public class BemPublicDo implements Serializable {
+public class OperatorDO implements Serializable {
 
-    private String pcontext;
+    private Long id;
+    private String userName;
+    private String oPassword;
+    private String oRole;
     private Integer status;
     private Date gmtCreate;
 
 }
-

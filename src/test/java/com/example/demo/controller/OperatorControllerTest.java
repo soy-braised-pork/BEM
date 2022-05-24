@@ -16,10 +16,10 @@ class OperatorControllerTest {
 
     @Test
     void singIn() throws Exception {
-        String personId="111";
-        String pwd="111";
-        Map queryNamePwd = (Map) iOperatorSV.checkLogin(personId, pwd);
-        System.out.println(queryNamePwd);
+//        String personId="111";
+//        String pwd="111";
+//        Map queryNamePwd = (Map) iOperatorSV.checkLogin(personId, pwd);
+//        System.out.println(queryNamePwd);
 
     }
 }

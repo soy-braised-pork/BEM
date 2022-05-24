@@ -28,7 +28,7 @@ public class RegisterImpl implements RegisterService {
             map.put("errorCode","缺少参数");
             return map;
         }
-        if (request.getPassword()==request.getRePassword()){
+        if (request.getPassword().equals(request.getRePassword())){
             registerMapper.insertOperator(request.getUserName(), request.getPassword(), request.getRole(),new Date());
             map.put("errorCode","成功");
             return map;

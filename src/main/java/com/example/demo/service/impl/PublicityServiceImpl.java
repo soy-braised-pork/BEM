@@ -6,9 +6,9 @@ import com.example.demo.entity.BemPublicDo;
 import com.example.demo.entity.PublicityRequest;
 import com.example.demo.service.PublicityService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -28,7 +28,7 @@ public class PublicityServiceImpl implements PublicityService {
     @Override
     public Map insertPublicity(PublicityRequest request) {
         HashMap map = new HashMap<>();
-        if (request == null && StringUtils.isEmpty(request.getContext())){
+        if (request == null || StringUtils.isEmpty(request.getContext())){
             map.put("errorCode ", "入参不能为空");
             return map;
         }
@@ -49,7 +49,9 @@ public class PublicityServiceImpl implements PublicityService {
             map.put("errorCode ", "入参不能为空");
             return map;
         }
-        List<BemPublicDo> dos = publicityMapper.publicityPage(request.getCurrPage(), request.getLimit());
+        int currPage;
+        currPage= request.getCurrPage()* request.getLimit();
+        List<BemPublicDo> dos = publicityMapper.publicityPage(currPage, request.getLimit());
         map.put("errorCode", "success");
         map.put("body", dos);
         return map;
