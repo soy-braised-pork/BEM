@@ -19,12 +19,12 @@ public interface PublicityMapper {
 
     /**
      * 写入公告
-     * @param context
+     * @param publicContext
      * @param create
      * @return
      */
-    @Insert(value = "INSERT INTO bem_public (p_context,status,gmt_create) VALUES (#{context},0,#{create})")
-    Long insertPublicity(@Param("context") String context, @Param("create") Date create);
+    @Insert(value = "INSERT INTO bem_public (public_context,status,gmt_create) VALUES (#{publicContext},0,#{create})")
+    Long insertPublicity(@Param("publicContext") String publicContext, @Param("create") Date create);
 
     /**
      * 查看公告
@@ -32,7 +32,7 @@ public interface PublicityMapper {
      * @param limit
      * @return
      */
-    @Select(value = "SELECT * FROM bem_chat LIMIT  #{currPage},#{limit}")
+    @Select(value = "SELECT * FROM bem_public LIMIT  #{currPage},#{limit}")
     List<BemPublicDo> publicityPage(@Param("currPage") int currPage,@Param("limit") int limit);
 
 }

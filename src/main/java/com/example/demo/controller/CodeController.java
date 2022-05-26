@@ -1,10 +1,7 @@
 package com.example.demo.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
@@ -21,6 +18,7 @@ import java.util.Random;
  * Creat on 2022-02-14
  * 控制验证码的controller
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/codeController")
 public class CodeController {

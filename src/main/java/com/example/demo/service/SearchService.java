@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.entity.BemMenuDo;
 import com.example.demo.entity.BemPageRequest;
 import com.example.demo.entity.SearchRequest;
+import com.example.demo.entity.SysRequest;
 
 import java.util.List;
 import java.util.Map;
@@ -25,6 +26,13 @@ public interface SearchService {
      * @return
      */
     Map bemPage(BemPageRequest request);
+
+    /**
+     * 查询摄像头的信息
+     * @param request
+     * @return
+     */
+    Map searchSys(SysRequest request);
 
 }
 

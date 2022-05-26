@@ -32,19 +32,27 @@ public class OperatorImpl implements IOperatorSV {
         HashMap map = new HashMap<>();
         if (request==null || StringUtils.isBlank(request.getUserName())
                 || StringUtils.isBlank(request.getPassword())){
-            map.put("errorCode","入参不能为空");
+            map.put("errorCode ", "入参不能为空");
+            map.put("success","false");
+            map.put("body", null);
             return map;
         }
         OperatorDO operatorDO = operatorMapper.findByPersonId(request.getUserName());
         if (operatorDO==null){
             map.put("errorCode","用户名不存在");
+            map.put("success","false");
+            map.put("body", null);
             return map;
         }
         if (operatorDO.getOPassword().equals(request.getPassword())){
-            map.put("errorCode","成功");
+            map.put("errorCode",null);
+            map.put("success","true");
+            map.put("body", "成功");
             return map;
         }else {
             map.put("errorCode","密码不正确");
+            map.put("success","false");
+            map.put("body", null);
             return map;
         }
     }

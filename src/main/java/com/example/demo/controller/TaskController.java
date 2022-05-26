@@ -7,13 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author zhaohan
  * 定时任务controller
  **/
 @Slf4j
-@Controller
+@CrossOrigin
+@RestController
 @EnableScheduling
 public class TaskController {
 

@@ -31,14 +31,18 @@ public class ChatServiceImpl implements ChatService {
         if (request == null || StringUtils.isEmpty(request.getUserName())
                 || StringUtils.isEmpty(request.getContext())){
             map.put("errorCode ", "入参不能为空");
-            return map;
+            map.put("success","false");
+            map.put("body", null);
         }
         Long chat = chatMapper.insertChat(request.getUserName(), request.getContext(), new Date());
         if (chat < 0L){
             map.put("errorCode ", "入参不能为空");
+            map.put("success","false");
+            map.put("body", null);
             return map;
         }
-        map.put("errorCode", "success");
+        map.put("errorCode", null);
+        map.put("success","true");
         map.put("body", "录入成功");
         return map;
     }
@@ -48,12 +52,14 @@ public class ChatServiceImpl implements ChatService {
         HashMap map = new HashMap<>();
         if (request == null){
             map.put("errorCode ", "入参不能为空");
-            return map;
+            map.put("success","false");
+            map.put("body", null);
         }
         int currPage;
-        currPage= request.getCurrPage()* request.getLimit();
+        currPage= (request.getCurrPage()-1)* request.getLimit();
         List<ChatDo> dos = chatMapper.chatPage(currPage, request.getLimit());
-        map.put("errorCode", "success");
+        map.put("errorCode", null);
+        map.put("success","true");
         map.put("body", dos);
         return map;
     }

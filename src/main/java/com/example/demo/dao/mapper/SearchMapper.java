@@ -32,5 +32,11 @@ public interface SearchMapper {
     @Select(value = "SELECT * FROM bem_menu LIMIT #{currPage},#{limit}")
     List<BemMenuDo> bemPage(@Param("currPage") int currPage,@Param("limit") int limit);
 
+    @Select(value = "SELECT * FROM bem_menu WHERE sys_id=#{sysId}")
+    List<BemMenuDo> searchSys(@Param("sysId") Integer sysId);
+
+    @Select(value = "SELECT * FROM bem_menu")
+    List<BemMenuDo> searchAll();
+
 }
 
