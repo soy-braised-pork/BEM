@@ -11,7 +11,7 @@ import java.util.Date;
 @Data
 public class BemPublicDo implements Serializable {
 
-    private String pcontext;
+    private String publicContext;
     private Integer status;
     private Date gmtCreate;
 

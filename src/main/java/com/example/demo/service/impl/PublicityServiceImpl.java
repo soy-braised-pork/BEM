@@ -30,14 +30,19 @@ public class PublicityServiceImpl implements PublicityService {
         HashMap map = new HashMap<>();
         if (request == null || StringUtils.isEmpty(request.getContext())){
             map.put("errorCode ", "入参不能为空");
+            map.put("success","false");
+            map.put("body", null);
             return map;
         }
         Long aLong = publicityMapper.insertPublicity(request.getContext(),new Date());
         if (aLong < 0L){
             map.put("errorCode ", "录入失败");
+            map.put("success","false");
+            map.put("body", null);
             return map;
         }
-        map.put("errorCode", "success");
+        map.put("errorCode", null);
+        map.put("success","true");
         map.put("body", "录入成功");
         return map;
     }
@@ -47,12 +52,15 @@ public class PublicityServiceImpl implements PublicityService {
         HashMap map = new HashMap<>();
         if (request == null){
             map.put("errorCode ", "入参不能为空");
+            map.put("success", "false");
+            map.put("body", null);
             return map;
         }
         int currPage;
-        currPage= request.getCurrPage()* request.getLimit();
+        currPage= (request.getCurrPage()-1)* request.getLimit();
         List<BemPublicDo> dos = publicityMapper.publicityPage(currPage, request.getLimit());
-        map.put("errorCode", "success");
+        map.put("errorCode", null);
+        map.put("success","true");
         map.put("body", dos);
         return map;
     }

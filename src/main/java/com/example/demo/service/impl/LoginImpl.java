@@ -25,20 +25,28 @@ public class LoginImpl implements LoginService {
     public Map updatePassword(RegisterRequest request) {
         Map map = new HashMap<>();
         if (request == null){
-            map.put("errorCode","缺少参数");
+            map.put("errorCode ", "入参不能为空");
+            map.put("success","false");
+            map.put("body", null);
             return map;
         }
         OperatorDO operatorDO = loginMapper.selectOperator(request.getUserName());
         if (operatorDO == null){
             map.put("errorCode","未找到指定用户");
+            map.put("success","false");
+            map.put("body", null);
             return map;
         }
         if (operatorDO.getOPassword().equals(request.getPassword())) {
             loginMapper.updatePassword(request.getUserName(), request.getRePassword());
-            map.put("errorCode", "成功");
+            map.put("errorCode", null);
+            map.put("success","true");
+            map.put("body", "成功");
             return map;
         }else {
             map.put("errorCode", "密码不正确");
+            map.put("success","false");
+            map.put("body", null);
             return map;
         }
     }
